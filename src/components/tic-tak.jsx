@@ -16,6 +16,7 @@ const TicTac = () => {
 
     if (logicHandler()) {
       const toaster = toast.loading("Resetting game!...");
+
       setTimeout(() => {
         setData(new Array(9).fill(""));
         console.log("Reseting game", data);
@@ -24,6 +25,7 @@ const TicTac = () => {
           type: "success",
           isLoading: false,
         });
+        setIsResetting(false);
       }, 3000);
     }
   }, [data]);
@@ -33,7 +35,6 @@ const TicTac = () => {
     const result = [];
     toast.dismiss();
     console.log("Checking logic", data);
-    toast(isXturn ? "X's turn" : "O's turn");
     let row1 = "";
     let row2 = "";
     let row3 = "";
@@ -69,13 +70,13 @@ const TicTac = () => {
       toast.info("IT'S A DRAW!!!");
       return true;
     } else if (result.indexOf(true) != -1) {
-      toast.dismiss();
       toast.success(data[lastClickedIndex] + " WON");
-    } else {
-      return false;
+      return true;
     }
 
-    return true;
+    toast(isXturn ? "X's turn" : "O's turn");
+
+    return false;
   };
 
   const setDataHandler = (value, index) => {

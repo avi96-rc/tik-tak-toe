@@ -12,7 +12,7 @@ const Cell = (props) => {
    
     console.log(gameData.index, cellValue);
 
-    if (cellValue == "") {
+    if (gameData.value == "") {
       const tempValue = gameData.isXturn ? "X" : "O";
       console.log(e)
       gameData.setData(tempValue, gameData.index);
