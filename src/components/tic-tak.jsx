@@ -9,7 +9,7 @@ const TicTac = () => {
   // data[3] = 'r'
   const [isXturn, setIsXTurn] = useState(true);
 
-  let lastClickedIndex = 0;
+  let lastClickedIndex = "O";
 
   useEffect(() => {
     console.log("state changed");
@@ -99,7 +99,7 @@ const TicTac = () => {
         {data.map((element, index, array) => {
           return (
             <Cell
-              key={index}
+              //key={index}
               data={{
                 value: element,
                 index: index,
